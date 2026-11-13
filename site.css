@@ -4,21 +4,25 @@ font-size:17px;line-height:1.85;-webkit-text-size-adjust:100%;}
 main{max-width:720px;margin:0 auto;background:#fffdf9;padding:28px 18px 44px;
 box-shadow:0 0 0 1px rgba(0,0,0,.04);}
 h1{font-size:23px;font-weight:700;text-align:center;letter-spacing:.5px;margin:0 0 24px;}
-.grp+.grp{margin-top:26px;}
-.head{display:flex;justify-content:space-between;align-items:baseline;}
+.grp+.grp{margin-top:30px;}
+.head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;}
 h2{font-size:19px;font-weight:700;margin:0;padding-left:11px;border-left:4px solid var(--accent);}
 .arch{font-size:13.5px;color:#5c5c5c;text-decoration:none;}
 .arch:hover{color:#0b5aa6;}
-.dates{display:flex;flex-wrap:wrap;gap:4px 20px;padding-left:15px;margin-top:8px;}
-.dates a{color:#161616;text-decoration:none;font-variant-numeric:tabular-nums;padding:3px 0;}
-.dates a:hover{color:#0b5aa6;}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:0 0 12px 15px;max-width:322px;}
+.cal .wk{font-size:12.5px;color:#8a8a86;text-align:center;padding:2px 0;}
+.cal .d{height:40px;display:flex;align-items:center;justify-content:center;font-size:15px;
+font-variant-numeric:tabular-nums;color:#b9b8b3;}
+.cal .d.on{background:#f7f4ee;border-radius:6px;color:#0b5aa6;text-decoration:none;}
+.cal .d.on.today{outline:1px solid var(--accent);}
+.readbox{background:#f7f4ee;border-radius:6px;padding:10px 12px;margin-left:15px;}
+.readbox a{display:block;color:#0b5aa6;text-decoration:none;font-variant-numeric:tabular-nums;padding:2px 0;}
+.readbox .m{font-size:13.5px;color:#5c5c5c;}
 h2.yr{color:var(--accent);margin:28px 0 2px;}
 h3.mo{font-size:13.5px;color:#5c5c5c;font-weight:400;margin:12px 0 0;padding-left:15px;}
 ul{list-style:none;margin:0;padding:0;}
 ul li a{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0 9px 15px;
-color:#161616;text-decoration:none;font-variant-numeric:tabular-nums;}
-ul li a:hover{color:#0b5aa6;}
-ul li a .w{font-size:13.5px;color:#5c5c5c;}
+color:#0b5aa6;text-decoration:none;font-variant-numeric:tabular-nums;}
 .back{text-align:right;margin:0 0 4px;font-size:13.5px;}
 .back a{color:#5c5c5c;text-decoration:none;}
 .back a:hover{color:#0b5aa6;}
