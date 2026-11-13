@@ -1,39 +1,25 @@
-:root{--ink:#161616;--ink2:#5c5c5c;--line:#e6e2da;--paper:#fffdf9;--bg:#efece6;}
-*{box-sizing:border-box;}
-body{margin:0;background:var(--bg);color:var(--ink);
-font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Source Han Sans SC","Microsoft YaHei",sans-serif;
-font-size:17px;line-height:1.85;}
-main{max-width:720px;margin:0 auto;background:var(--paper);padding:26px 18px 44px;
-box-shadow:0 0 0 1px rgba(0,0,0,.04);}
-.mast{border-bottom:1px solid var(--line);padding-bottom:14px;}
-h1{font-size:23px;line-height:1.4;margin:0 0 6px;font-weight:700;text-align:center;letter-spacing:.5px;}
-.sub{font-size:13.5px;color:var(--ink2);text-align:center;letter-spacing:.5px;}
-.nav{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px;font-size:14px;}
-.nav a{color:#0b5aa6;text-decoration:none;padding:4px 10px;border:1px solid var(--line);border-radius:999px;}
-.nav a:hover{background:#f6f3ec;}
-.cards{display:grid;gap:12px;margin:20px 0 6px;}
-@media(min-width:700px){.cards{grid-template-columns:1fr 1fr 1fr;}}
-.card{border:1px solid var(--line);border-radius:10px;padding:14px 14px 12px;background:#fffdf9;}
-.card h2{font-size:16.5px;margin:0 0 2px;padding-left:9px;border-left:3px solid var(--accent);line-height:1.5;}
-.card .cad{font-size:12.5px;color:var(--ink2);margin:0 0 8px;padding-left:12px;}
-.card .latest{font-size:14.5px;margin:0 0 8px;}
-.card a{color:#0b5aa6;text-decoration:none;word-break:break-all;}
-.card .all{font-size:13px;color:var(--ink2);}
-h2.sec{font-size:19px;margin:30px 0 10px;padding-left:11px;border-left:4px solid #161616;}
-ul.latest{list-style:none;margin:0;padding:0;}
-ul.latest li{display:flex;gap:10px;align-items:baseline;padding:9px 0;border-bottom:1px solid #f2efe8;font-size:15px;}
-ul.latest .d{color:var(--ink2);font-variant-numeric:tabular-nums;min-width:74px;}
-ul.latest .t{font-size:12px;padding:1px 6px;border-radius:4px;background:#f2efe8;color:#444;white-space:nowrap;}
-ul.latest .go a{color:#0b5aa6;text-decoration:none;font-size:14px;}
-ul.latest .snip{flex:1;color:var(--ink2);font-size:13px;}
-.year{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;font-size:13.5px;}
-.year a{color:#0b5aa6;text-decoration:none;padding:3px 9px;border:1px solid var(--line);border-radius:999px;}
-h2.yearh{font-size:20px;margin:26px 0 8px;padding-top:10px;border-top:1px solid var(--line);}
-h3.month{font-size:15px;margin:16px 0 4px;color:#5c5c5c;font-weight:600;}
-h3.month span{font-weight:400;font-size:12.5px;color:#8a8a8a;margin-left:6px;}
-.row{display:flex;gap:10px;align-items:baseline;padding:10px 0;border-bottom:1px solid #f2efe8;}
-.row .day{font-variant-numeric:tabular-nums;min-width:76px;color:#333;}
-.row .meta{flex:1;font-size:13.5px;color:var(--ink2);}
-.row .go a{color:#0b5aa6;text-decoration:none;font-size:14px;}
-.wrap{display:flex;flex-wrap:wrap;gap:6px 10px;font-size:13.5px;color:var(--ink2);margin-top:14px;}
-footer{margin-top:30px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink2);text-align:center;}
+body{margin:0;background:#fff;color:#161616;
+font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+font-size:17px;line-height:1.6;-webkit-text-size-adjust:100%;}
+main{max-width:640px;margin:0 auto;padding:28px 20px 48px;}
+h1{font-size:27px;font-weight:700;margin:0 0 26px;letter-spacing:.5px;}
+.grp{padding:16px 0 18px;border-top:1px solid #ecebe6;}
+.grp:first-of-type{border-top:0;}
+.head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px;}
+h2{font-size:19px;font-weight:700;margin:0;}
+.arch{font-size:14px;color:#8a8a86;text-decoration:none;}
+.arch:hover{color:#0b5aa6;}
+.dates{display:flex;flex-wrap:wrap;gap:6px 18px;}
+.dates a{color:#161616;text-decoration:none;font-size:17px;font-variant-numeric:tabular-nums;padding:4px 0;}
+.dates a:hover{color:#0b5aa6;}
+h2.yr{font-size:20px;margin:30px 0 4px;}
+h3.mo{font-size:14px;color:#8a8a86;font-weight:400;margin:14px 0 2px;}
+ul{list-style:none;margin:0;padding:0;}
+ul li{border-bottom:1px solid #f1f0eb;}
+ul li a{display:flex;justify-content:space-between;align-items:baseline;padding:13px 0;
+color:#161616;text-decoration:none;font-variant-numeric:tabular-nums;}
+ul li a:hover{color:#0b5aa6;}
+ul li a .w{font-size:13.5px;color:#8a8a86;}
+.top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+.top a{font-size:14px;color:#8a8a86;text-decoration:none;}
+.top a:hover{color:#0b5aa6;}
