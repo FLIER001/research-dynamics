@@ -52,3 +52,8 @@ ul li{border-bottom:1px solid var(--line);}
 ul li a{display:block;padding:10px 0;color:#0b5aa6;font-variant-numeric:tabular-nums;}
 .back{margin:0 0 10px;text-align:right;font-size:14px;}
 .back a{color:var(--sub);text-decoration:none;}
+
+.grp[data-series="research"],body[data-series="research"]{--accent:#8c2b2b;}
+.grp[data-series="brief"],body[data-series="brief"]{--accent:#1f4e79;}
+.grp[data-series="policy"],body[data-series="policy"]{--accent:#1f6b52;}
+.grp[data-series="academic"],body[data-series="academic"]{--accent:#5b4a8f;}
