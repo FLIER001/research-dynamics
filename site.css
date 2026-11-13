@@ -41,7 +41,7 @@ font-variant-numeric:tabular-nums;color:var(--sub);border-right:1px solid var(--
 padding:8px 16px;min-height:38px;border-radius:999px;cursor:pointer;font-family:inherit;
 -webkit-appearance:none;appearance:none;font-variant-numeric:tabular-nums;}
 .btn:hover{border-color:#bdb4a2;color:var(--ink);}
-.btn.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;}
+.btn.on{background:#fffdf9;border-color:var(--accent);color:var(--accent);font-weight:600;box-shadow:inset 0 0 0 1px var(--accent);}
 .panel{margin-top:4px;}
 h2.yr{font-size:19px;}
 h3.mo{font-size:14px;font-weight:400;margin:14px 0 2px;}
