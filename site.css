@@ -36,7 +36,7 @@ footer{margin-top:30px;padding-top:14px;border-top:1px solid var(--line);font-si
 .cal .d{height:44px;display:flex;align-items:center;justify-content:center;font-size:15px;
 font-variant-numeric:tabular-nums;color:var(--sub);border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
 .cal .d.on{background:#f7f4ee;color:#0b5aa6;text-decoration:none;}
-.cal .d.on.today{box-shadow:inset 0 0 0 1px var(--accent);}
+.cal .d.today{box-shadow:inset 0 0 0 1px var(--accent);color:var(--accent);font-weight:600;}
 .btns{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px;}
 .btn{border:1px solid #e0dacc;background:#f7f4ee;color:var(--sub);font-size:13px;line-height:1.2;
 padding:5px 11px;border-radius:0;cursor:pointer;font-family:inherit;
