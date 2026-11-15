@@ -2,6 +2,14 @@
  {
   "series": "brief",
   "name": "要闻观点摘编",
+  "file": "news-brief-20261115.html",
+  "iso": "2026-11-15",
+  "date": "2026年11月15日",
+  "footer": "本期 6 篇观点 · 10 条要闻 · 2026年11月15日"
+ },
+ {
+  "series": "brief",
+  "name": "要闻观点摘编",
   "file": "news-brief-20261114.html",
   "iso": "2026-11-14",
   "date": "2026年11月14日",
