@@ -1,0 +1,39 @@
+name: 重建站点
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: site-build
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 注入右侧目录与返回主页
+        run: python3 add_toc.py
+      - name: 重建首页、归档页、site.css 与 manifest
+        run: python3 build_index.py
+      - name: 提交变更
+        run: |
+          git config user.name "站点机器人"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "无变更"
+          else
+            git commit -m "自动重建：目录注入、首页与归档"
+            git push
+          fi

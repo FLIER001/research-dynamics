@@ -34,3 +34,12 @@
 - 抓取过程文件（`d111x/`、`b111x/`、`p111x/` 这类目录，以及临时 XML/JSON/HTML/PDF/txt）用完即删，不长期保存；内容已在成品页面里，来源可重新抓取。
 - 一次性的 build、merge、索引备份脚本不留在根目录；需要复用的放 `归档/脚本/`。
 - 首页只保留当前使用的 `index.html`，历史版本不留在根目录。
+
+## 自动构建
+
+仓库根目录的 `build_index.py` 与 `add_toc.py` 由 GitHub Actions（`.github/workflows/site.yml`）在每次推送到 main 后自动执行：
+
+1. `add_toc.py`：给所有期页注入右侧导航目录与页脚「← 返回主页」（幂等，可反复执行）。
+2. `build_index.py`：扫描期页，重建 `index.html`、四个归档页、`site.css` 与 `manifest.json`。
+
+因此只需把当期页面 `news-brief-YYYYMMDD.html` 之类的成品页推到 main，首页与归档会自动更新，不必手工改列表。`style-template.html` 是页面样式骨架，新页照它复制后只换文字。
