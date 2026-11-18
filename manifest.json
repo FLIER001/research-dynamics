@@ -8,6 +8,14 @@
   "footer": "本期共 7 条 · 2026年11月18日"
  },
  {
+  "series": "policy",
+  "name": "国内外政策动态",
+  "file": "policy-watch-20261118.html",
+  "iso": "2026-11-18",
+  "date": "2026年11月18日",
+  "footer": "本期 4 条 · 2026年11月18日"
+ },
+ {
   "series": "research",
   "name": "智库与国际组织研究动态",
   "file": "research-dynamics-20261117.html",
@@ -22,14 +30,6 @@
   "iso": "2026-11-17",
   "date": "2026年11月17日",
   "footer": "本期 4 条 · 2026年11月17日"
- },
- {
-  "series": "brief",
-  "name": "要闻观点摘编",
-  "file": "news-brief-20261117.html",
-  "iso": "2026-11-17",
-  "date": "2026年11月17日",
-  "footer": "本期 15 篇观点 · 9 条要闻 · 2026年11月17日"
  },
  {
   "series": "research",
@@ -53,7 +53,7 @@
   "file": "news-brief-20261116.html",
   "iso": "2026-11-16",
   "date": "2026年11月16日",
-  "footer": "本期 12 篇观点 · 7 条要闻 · 2026年11月16日"
+  "footer": "本期 6 篇观点 · 10 条要闻 · 2026年11月16日"
  },
  {
   "series": "academic",
