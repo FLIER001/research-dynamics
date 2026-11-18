@@ -13,26 +13,26 @@
 ## 来源与入口
 
 观点来源（Economist 与 FT 为必查两家：窗口内全部相关栏目、专题与作者页先建完整候选清单再逐篇核对，合格文章全部纳入观点）：
-- The Economist：官方 RSS `https://www.economist.com/latest/rss.xml` 核对标题与链接；周刊页被 Cloudflare 拦截，不再试原页。正文导读走 `https://news.sisuer.cn/tag/economist/` 取最新一期，URL 加 `.md` 取正文。条目标注「第三方导读，非原文」。
-- FT：`https://www.ft.com/rss/` 下 world、markets、opinion、companies、economy、technology、global-economy、financials、climate-capital、lex、us、energy、trade 等栏目 feed，各 25 条，按 pubDate 筛窗口、按标题去重。原站正文 403 且付费墙：用 RSS 的 description 与页面 og:description（`/root/web-agent/run_page.sh` 可拿到标题与导语），摘要只写导语支持的内容并标「仅读到导语」；同日 FT 中文网译文可补细节，标「FT 中文网译文」。
+- The Economist：官方 RSS `https://www.economist.com/latest/rss.xml`（300 条，只有标题与链接、无摘要）建候选清单；原站正文付费墙，tavily_extract 只到首段，写摘要标注「仅读到首段」。中文导读走 `https://news.sisuer.cn/tag/economist/` 取最新一期，URL 加 `.md` 取该期综述与中英目录，标「第三方导读，非原文」。
+- FT：`https://www.ft.com/rss/` 下 world、markets、opinion、companies、economy、technology、global-economy、financials、climate-capital、lex、us、energy、trade 等栏目 feed，各 25 条，按 pubDate 筛窗口、按标题去重。原站正文 403 且付费墙，tavily_extract 也取不到；用 RSS 的 description 与页面 og:description（`/root/web-agent/run_page.sh` 拿到标题与导语），摘要只写导语支持的内容并标「仅读到导语」。FT 中文网首页可开但正文跳登录，不当作正文来源。
 - Foreign Affairs：`https://www.foreignaffairs.com/rss.xml`，curl 直连抓正文，失败时检索转载。
 - Project Syndicate：`https://www.project-syndicate.org/rss`；带免费账号 Cookie 仍只能读到导言，标注「仅读到导言」。
-- Foreign Policy：`https://foreignpolicy.com/feed/`。
+- Foreign Policy：`https://foreignpolicy.com/feed/`（feed 带 content:encoded）；原页对自动化检测返回技术故障页，正文用 tavily_extract 取全文。
 - Lawfare：`https://www.lawfaremedia.org/feeds/articles`（可能 403，失败转检索 lawfaremedia.org）；War on the Rocks：`https://warontherocks.com/feed/`。
-- VoxEU：`https://cepr.org/voxeu` 与 feed 可能 403，用检索并打开原页核对。
-- Bruegel：`https://www.bruegel.org/rss.xml`；PIIE 无公开 RSS，查官网 What's New 与 commentary 栏目。
+- VoxEU：cepr.org 整站 Cloudflare 403，`rss.xml` 是空 channel，browser 停在「Just a moment」。用 tavily_search（site:cepr.org）发现专栏，再 tavily_extract 取全文，这条路线实测可拿到完整正文。
+- Bruegel：`https://www.bruegel.org/rss.xml`（10 条，带摘要）；PIIE 无公开 RSS，`https://www.piie.com/research/publications` 直连 200，旧 /publications 已 403 重定向。
 - Noema：`https://www.noemamag.com/feed/`。
 
 新闻来源：
-- WSJ：镜像 `https://nav.daven.us/wsj/`（同标题去重）；时间核对用 Google News RSS `site:wsj.com when:1d`；引用镜像给出的 wsj.com 原站地址。头版 PDF 按美东日期判断，403 直接跳过。`feeds.a.dj.com` 的 RSS 已停更，不用。
-- Bloomberg：`https://feeds.bloomberg.com/markets/news.rss`、`https://feeds.bloomberg.com/politics/news.rss`；原站 403，不直连。
-- Reuters：原站、RSS 均 401；用 tavily_search（topic=news、time_range=day、include_domains=reuters.com）或 Google News RSS 发现标题，正文从可直连转载（Japan Times、BNN Bloomberg、swissinfo、CNA）取；标注「路透稿件，转载」，全无可读转载时写明。
-- NYT World：`https://rss.nytimes.com/services/xml/rss/nyt/World.xml`。
-- Politico：美国版 RSS 403，用 Google News RSS 发现再做检索核对；Politico Europe：`https://www.politico.eu/feed/`。
-- Nikkei Asia：`https://asia.nikkei.com/rss/feed/nar`。
+- WSJ：镜像 `https://nav.daven.us/wsj/` 只列标题与 wsj.com 原站链接（`?url=` 参数同样只回列表），不能取正文。原站 curl 401、browser 停在「Please enable JS and disable any ad blocker」。正文用 tavily_extract（实测首两段）或 tavily_search 片段，标注「仅读到导语」；时间核对用 Google News RSS `site:wsj.com when:1d`。`feeds.a.dj.com` 的 RSS 已停更，不用。
+- Bloomberg：`https://feeds.bloomberg.com/markets/news.rss`、`https://feeds.bloomberg.com/politics/news.rss`（markets 偶发超时，重试一次）；原站 curl 403，正文用 browser（`/root/web-agent/run_page.sh`）读付费墙前几段，tavily_extract 对原站失败。
+- Reuters：原站、RSS 均 401，tavily_extract 也取不到；用 tavily_search（topic=news、time_range=day、include_domains=reuters.com）拿标题与首段，或 Google News RSS 发现，正文从可直连转载（Japan Times、BNN Bloomberg、swissinfo、CNA）取；标注「路透稿件，转载」，全无可读转载时写明。
+- NYT World：`https://rss.nytimes.com/services/xml/rss/nyt/World.xml`（59 条）；curl 403、browser 被同一广告拦截提示挡住，正文用 tavily_extract 取全文。
+- Politico：美国版用 `https://rss.politico.com/politics-news.xml`（200，约 20 条，带 content:encoded）；Politico Europe 的 feed 403 Cloudflare，用 browser 打开站点取正文。
+- Nikkei Asia：`https://asia.nikkei.com/rss/feed/nar`（51 条，无摘要）；curl 超时，browser 可开但付费墙只放前 3 段，摘要标注「仅读到开头」。
 - Al Jazeera：`https://www.aljazeera.com/xml/rss/all.xml`；France 24：`https://www.france24.com/en/rss`。
-- Rest of World：`https://restofworld.org/feed/`；MIT Technology Review：`https://www.technologyreview.com/feed/`（产品评测与纯消费科技不收）。
-- AP：原站不稳定，用 Google News RSS 发现标题后找可读转载，标注「美联稿件，转载」。
+- Rest of World：`https://restofworld.org/feed/` 对本机 IP 回 429，改用 browser 打开站点与文章；MIT Technology Review：`https://www.technologyreview.com/feed/`，正文直连可读（产品评测与纯消费科技不收）。
+- AP：原站 feed 403 Cloudflare，browser 可正常打开站点与文章；也可用 Google News RSS 发现标题，转载时标注「美联稿件，转载」。
 - BBC World：`https://feeds.bbci.co.uk/news/world/rss.xml`；Guardian World：`https://www.theguardian.com/world/rss`（补位与交叉核对）。
 
 ## 数量与编排
