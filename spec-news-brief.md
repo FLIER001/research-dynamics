@@ -15,6 +15,7 @@
 观点来源（Economist 与 FT 为必查两家：窗口内全部相关栏目、专题与作者页先建完整候选清单再逐篇核对，合格文章全部纳入观点）：
 - The Economist：官方 RSS `https://www.economist.com/latest/rss.xml`（300 条，只有标题与链接、无摘要）建候选清单；原站正文付费墙，tavily_extract 只到首段，写摘要标注「仅读到首段」。中文导读走 `https://news.sisuer.cn/tag/economist/` 取最新一期，URL 加 `.md` 取该期综述与中英目录，标「第三方导读，非原文」。
 - FT：`https://www.ft.com/rss/` 下 world、markets、opinion、companies、economy、technology、global-economy、financials、climate-capital、lex、us、energy、trade 等栏目 feed，各 25 条，按 pubDate 筛窗口、按标题去重。原站正文 403 且付费墙，tavily_extract 也取不到；用 RSS 的 description 与页面 og:description（`/root/web-agent/run_page.sh` 拿到标题与导语），摘要只写导语支持的内容并标「仅读到导语」。FT 中文网首页可开但正文跳登录，不当作正文来源。
+- 全文口径：Economist 与 FT 只用 RSS／导语或首段，摘要标注「仅读到导语/首段」，中文细节用 sisuer 综述补；用户已定先不接全文，不再为此重查。
 - Foreign Affairs：`https://www.foreignaffairs.com/rss.xml`，curl 直连抓正文，失败时检索转载。
 - Project Syndicate：`https://www.project-syndicate.org/rss`；带免费账号 Cookie 仍只能读到导言，标注「仅读到导言」。
 - Foreign Policy：`https://foreignpolicy.com/feed/`（feed 带 content:encoded）；原页对自动化检测返回技术故障页，正文用 tavily_extract 取全文。
@@ -58,9 +59,8 @@
 - 来源：中文资料名、发布机构、日期与可点击链接；转载与导读按上面的标注规则注明。
 - 文字：正式、凝练，不写免责套话，不用“本文/该文”指称发布形式。
 
-## 交付物
-- 单文件手机端 HTML：`news-brief-YYYYMMDD.html`，存放于 `/root/workspace/日报`；标题《要闻观点摘编（YYYY年MM月DD日）》。
-- 版式原样复制 `style-template.html` 的 style 块与页面骨架，只换文字；本栏目主色 `#1f4e79`（把 `:root` 的 `--accent` 换成本色）。
-- 出页后运行 `python3 build_index.py`，重建 `index.html`、四个 `archive-*.html`、`site.css`、`manifest.json`。
-- 提交当期 HTML 与 `index.html`、`archive-academic.html`、`archive-research.html`、`archive-policy.html`、`archive-brief.html` 到 `FLIER001/research-dynamics` 的 main 分支。
-- 交付只回 Pages 直链，附一行「本期 X 篇观点 · Y 条要闻」，不附其他链接，不调用 present。
+## 兜底与出页
+
+- 出页前先查 `origin/main` 是否已有当天 `news-brief-YYYYMMDD.html`（本地根目录已有或 Pages 直链已 200 也算）：已存在就不生成、不覆盖，只回一行「今日已有出页，未重复生成」加该直链。
+- 文件名、主色、模板、目录注入、首页重建、推送与交付按 `AGENTS.md` 的「栏目与产物」「页面生产」「发布」「交付」。
+- 抓不到或整类渠道失效时按来源节标注，不编造、不用旧文凑数。
