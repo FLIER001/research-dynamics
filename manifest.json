@@ -1,5 +1,13 @@
 [
  {
+  "series": "brief",
+  "name": "要闻观点摘编",
+  "file": "news-brief-20261128.html",
+  "iso": "2026-11-28",
+  "date": "2026年11月28日｜统计窗口：11月27日08:00—11月28日08:00（北京时间）",
+  "footer": "全球重要经济政策观点与要闻简报 · 2026年11月28日"
+ },
+ {
   "series": "research",
   "name": "智库与国际组织研究动态",
   "file": "research-dynamics-20261127.html",
